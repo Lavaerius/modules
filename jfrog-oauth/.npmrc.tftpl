@@ -1,5 +1,0 @@
-email=${ARTIFACTORY_EMAIL}
-%{ for REPO in REPOS ~}
-${REPO.SCOPE}registry=${JFROG_URL}/artifactory/api/npm/${REPO.NAME}
-//${JFROG_HOST}/artifactory/api/npm/${REPO.NAME}/:_authToken=${ARTIFACTORY_ACCESS_TOKEN}
-%{ endfor ~}

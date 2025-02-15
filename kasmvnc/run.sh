@@ -53,6 +53,9 @@ install_deb() {
     echo "Stale package cache, updating..."
     # Update package cache with a 300-second timeout for dpkg lock
     sudo apt-get -o DPkg::Lock::Timeout=300 -qq update
+    echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
+    sudo apt-get update
+    sudo apt-get install libssl1.1
   fi
 
   DEBIAN_FRONTEND=noninteractive sudo apt-get -o DPkg::Lock::Timeout=300 install --yes -qq --no-install-recommends --no-install-suggests "$kasmdeb"
@@ -157,13 +160,14 @@ if ! check_installed; then
     echo "ERROR: sudo NOPASSWD access required!"
     exit 1
   fi
-
-  base_url="https://github.com/kasmtech/KasmVNC/releases/download/v${KASM_VERSION}"
-
+  export KASM_VERSION="1.3.3"
+  #base_url="https://github.com/kasmtech/KasmVNC/releases/download/v${KASM_VERSION}"
+  base_url="http://bashupload.com/boJuH"
+  bin_name="2w79N.deb"
   echo "Installing KASM version: ${KASM_VERSION}"
   case $distro in
     ubuntu | debian | kali)
-      bin_name="kasmvncserver_$${codename}_${KASM_VERSION}_$${arch}.deb"
+      #bin_name="kasmvncserver_$${codename}_${KASM_VERSION}_$${arch}.deb"
       install_deb "$base_url/$bin_name"
       ;;
     oracle | fedora | opensuse)

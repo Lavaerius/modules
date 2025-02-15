@@ -162,8 +162,8 @@ if ! check_installed; then
   fi
   export KASM_VERSION="1.3.3"
   #base_url="https://github.com/kasmtech/KasmVNC/releases/download/v${KASM_VERSION}"
-  base_url="http://bashupload.com/"
-  bin_name="gy9zd/kWH37.deb"
+  base_url="http://bashupload.com"
+  bin_name="m-pLG/Qq28E.deb"
   echo "Installing KASM version: ${KASM_VERSION}"
   case $distro in
     ubuntu | debian | kali)

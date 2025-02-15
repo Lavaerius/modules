@@ -160,14 +160,15 @@ if ! check_installed; then
     echo "ERROR: sudo NOPASSWD access required!"
     exit 1
   fi
-  #export KASM_VERSION="1.3.3"
-  base_url="https://github.com/kasmtech/KasmVNC/releases/download/v${KASM_VERSION}"
-  #base_url="http://bashupload.com"
-  #bin_name="m-pLG/Qq28E.deb"
+  
+  export KASM_VERSION="1.3.3-1"  
+  base_url="https://gitea.wagshome.duckdns.org/api/packages/publicWagsHome/generic/kasmvnc/1.3.3-1"
+  bin_name="kasmvncserver_1.3.3-1_amd64.deb"
   echo "Installing KASM version: ${KASM_VERSION}"
+  
   case $distro in
     ubuntu | debian | kali)
-      bin_name="kasmvncserver_$${codename}_${KASM_VERSION}_$${arch}.deb"
+      #bin_name="kasmvncserver_$${codename}_${KASM_VERSION}_$${arch}.deb"
       install_deb "$base_url/$bin_name"
       ;;
     oracle | fedora | opensuse)
